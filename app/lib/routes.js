@@ -1,4 +1,4 @@
-module.exports = function (app, homeController, userController, todoController, apiController) {
+module.exports = function (app, homeController, userController, todoController, markerController, apiController) {
 
     // Home
     app.get('/', homeController.index);
@@ -13,19 +13,24 @@ module.exports = function (app, homeController, userController, todoController, 
     Rather than go right to the API routes below, we need to do a few things first, like say what Users Todos
     to return and stamp the Todos they create with their ID.  Once we've dne these things (in the "pre" functions),
     we end up invoking the generic api methods.  Cool, right?
-     */
+	     */
     app.get('/api/Todo', ensureAuthenticated, todoController.preSearch, apiController.search);
     app.post('/api/Todo', ensureAuthenticated, todoController.preCreate, apiController.create);
     app.post('/api/Todo/:id', ensureAuthenticated, todoController.preUpdate, apiController.update);
     app.del('/api/Todo/:id', ensureAuthenticated, todoController.preDestroy, apiController.destroy);
 
+    app.get('/api/Marker', ensureAuthenticated, markerController.preSearch, apiController.search);
+    app.post('/api/Marker', ensureAuthenticated, markerController.preCreate, apiController.create);
+    app.post('/api/Marker/:id', ensureAuthenticated, markerController.preUpdate, apiController.update);
+    app.del('/api/Marker/:id', ensureAuthenticated, markerController.preDestroy, apiController.destroy);
+
     //Generic restful api for all models - if previous routes are not matched, will fall back to these
     //See libs/params.js, which adds param middleware to load & set req.Model based on :model argument
-    app.get('/api/:model', ensureAuthenticated, apiController.search);
-    app.post('/api/:model', ensureAuthenticated, apiController.create);
-    app.get('/api/:model/:id', ensureAuthenticated, apiController.read);
-    app.post('/api/:model/:id', ensureAuthenticated, apiController.update);
-    app.del('/api/:model/:id', ensureAuthenticated, apiController.destroy);
+    //app.get('/api/:model', ensureAuthenticated, apiController.search);
+    //app.post('/api/:model', ensureAuthenticated, apiController.create);
+    //app.get('/api/:model/:id', ensureAuthenticated, apiController.read);
+    //app.post('/api/:model/:id', ensureAuthenticated, apiController.update);
+    //app.del('/api/:model/:id', ensureAuthenticated, apiController.destroy);
 
     /*
     default route if we haven't hit anything yet

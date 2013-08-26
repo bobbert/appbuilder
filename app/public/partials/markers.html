@@ -1,0 +1,42 @@
+<style>
+    .completed{
+        text-decoration:line-through;
+        background: darkgrey;
+    }
+</style>
+
+<div class="span6 offset3">
+    <h2>Map Markers</h2>
+    <hr>
+    <table class="table table-hover table-condensed" >
+        <thead>
+        <tr >
+	        <th></th>
+            <th>Marker Name</th>
+            <th>Visible?</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="marker in markers">
+	        <td><img src="img/red_marker.png"></td>
+            <td>{{marker.name}}</td>
+            <td>{{marker.visible}}</td>
+            <td>{{marker.lat}}</td>
+            <td>{{marker.lon}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form name="newMarkerForm" class="form-inline well">
+        <legend>New Map Marker</legend>
+        <input type="text" class="input-xlarge" ng-model="newMarker.name" required placeholder="Marker Name">
+        <input type="checkbox" class="input-xlarge" ng-model="newMarker.visible">
+        <input type="text" class="input-xlarge" ng-model="newMarker.lat" required placeholder="Latitude, degrees">
+        <input type="text" class="input-xlarge" ng-model="newMarker.lon" required placeholder="Longitude, degrees">
+        <button class="btn btn-primary" ng-click="createMarker()">Create</button>
+        <br>
+        {{statusMessage}}
+    </form>
+</div>

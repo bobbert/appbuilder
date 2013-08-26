@@ -86,6 +86,38 @@ function TodosCtrl($scope, $http, Todo) {
             $scope.todos = data;
         });
     }
+}
+
+function MarkersController($scope, $http, Marker) {
+
+    //get the markers from server
+    getMarkersFromServer();
+
+    $scope.newMarker = {};
+
+    //function to create a new Marker object
+    $scope.createMarker = function (marker) {
+        if ($scope.newMarkerForm.$invalid) {
+            $scope.statusMessage = 'Invalid marker data';
+            return;
+        }
+        Marker.save({}, $scope.newMarker,
+            function (data) {
+                $scope.markers.push(data);
+                $scope.statusMessage = 'New marker saved.';
+                $scope.newMarker = {};
+
+            },
+            function (data, status, headers, config) {
+                $scope.statusMessage = data;
+            });
+    }
+
+    function getMarkersFromServer() {
+        Marker.query(function (data) {
+            $scope.markers = data;
+        });
+    }
 
 }
 
