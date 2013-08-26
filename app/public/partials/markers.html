@@ -8,7 +8,7 @@
 <div class="span6 offset3">
     <h2>Map Markers</h2>
     <hr>
-    <table class="table table-hover table-condensed" >
+    <table class="table table-hover table-condensed">
         <thead>
         <tr >
 	        <th></th>
@@ -29,13 +29,37 @@
         </tbody>
     </table>
 
-    <form name="newMarkerForm" class="form-inline well">
+    <form name="newMarkerForm" class="form-horizontal well">
         <legend>New Map Marker</legend>
-        <input type="text" class="input-xlarge" ng-model="newMarker.name" required placeholder="Marker Name">
-        <input type="checkbox" class="input-xlarge" ng-model="newMarker.visible">
-        <input type="text" class="input-xlarge" ng-model="newMarker.lat" required placeholder="Latitude, degrees">
-        <input type="text" class="input-xlarge" ng-model="newMarker.lon" required placeholder="Longitude, degrees">
-        <button class="btn btn-primary" ng-click="createMarker()">Create</button>
+		<div class="control-group">
+		    <label class="control-label">Marker Name:</label>
+		    <div class="controls">
+		        <input type="text" class="input-medium" ng-model="newMarker.name" required placeholder="Name">
+		    </div>
+		</div>
+		<div class="control-group">
+		    <label class="control-label">Marker Visible?</label>
+		    <div class="controls">
+		        <input type="checkbox" class="input-medium" ng-model="newMarker.visible">
+		    </div>
+		</div>
+		<div class="control-group">
+		    <label class="control-label">Latitude (degrees):</label>
+		    <div class="controls">
+		        <input type="number" class="input-medium" ng-model="newMarker.lat" required placeholder="Latitude, degrees">
+		    </div>
+		</div>
+		<div class="control-group">
+		    <label class="control-label">Longitude (degrees):</label>
+		    <div class="controls">
+		        <input type="number" class="input-medium" ng-model="newMarker.lon" required placeholder="Longitude, degrees">
+		    </div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<button class="btn btn-primary" ng-click="createMarker()">Create</button>
+			</div>
+		</div>
         <br>
         {{statusMessage}}
     </form>

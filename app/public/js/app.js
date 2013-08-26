@@ -10,6 +10,7 @@ angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives'])
             .when('/login', { templateUrl: '/partials/login.html'})
             .when('/todos', { templateUrl: '/partials/todos.html', controller: TodosCtrl })
             .when('/markers', { templateUrl: '/partials/markers.html', controller: MarkersController })
+            .when('/map', { templateUrl: '/partials/maps.html', controller: MarkersController })
             .otherwise({ templateUrl: '/partials/404.html' });
 
         //gets rid of the # in urls
