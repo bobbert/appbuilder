@@ -19,7 +19,7 @@ angular.module('myApp.directives', []).directive('appVersion', ['version', funct
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
 				zoom: 15
 			};	
-			var map = new google.maps.Map((element || [])[0], mapOptions);
+			scope.map = new google.maps.Map((element || [])[0], mapOptions);
 	    }		
 	};
 });

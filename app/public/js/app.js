@@ -6,9 +6,9 @@ angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives'])
 
         //The routes that our angular app will handle
         $routeProvider
-            .when('/', { templateUrl: '/partials/index.html', controller: IndexCtrl })
+            .when('/', { templateUrl: '/partials/index.html', controller: IndexController })
             .when('/login', { templateUrl: '/partials/login.html'})
-            .when('/todos', { templateUrl: '/partials/todos.html', controller: TodosCtrl })
+            .when('/todos', { templateUrl: '/partials/todos.html', controller: TodosController })
             .when('/markers', { templateUrl: '/partials/markers.html', controller: MarkersController })
             .when('/map', { templateUrl: '/partials/maps.html', controller: MarkersController })
             .otherwise({ templateUrl: '/partials/404.html' });
