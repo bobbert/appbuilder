@@ -10,6 +10,7 @@ function MarkersController($scope, $http, Marker) {
 	$scope.map = null;
 	$scope.markers = [];
 	$scope.bounds = new google.maps.LatLngBounds();
+	$scope.markerIcons = ['computers', 'movierental', 'music', 'phones', 'photography', 'videogames'];
 
 	//function to create a new Marker object
 	$scope.createMarker = function(marker) {
@@ -36,10 +37,20 @@ function MarkersController($scope, $http, Marker) {
 		return markers;
 	}
 	
+	$scope.getMarkerIconPath = function(marker) {
+		if (marker.iconType) {
+			return '/img/' + marker.iconType + '.png';
+		}
+		else {
+			return '/img/green_marker.png';
+		}
+	}
+	
 	function setSingleMarkerAsMapPoint(marker) {
 		var newMarkerPosition = new google.maps.LatLng(marker.lat, marker.lon);
 		var newMarker = new google.maps.Marker({
 		      position: newMarkerPosition,
+			  icon: $scope.getMarkerIconPath(marker),
 		      map: $scope.map,
 		      title: marker.name
 		});

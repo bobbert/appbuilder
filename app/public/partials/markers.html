@@ -20,7 +20,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="marker in markers">
-	        <td><img src="img/red_marker.png"></td>
+	        <td><img src={{getMarkerIconPath(marker)}}></td>
             <td>{{marker.name}}</td>
             <td>{{marker.visible}}</td>
             <td>{{marker.lat}}</td>
@@ -41,6 +41,13 @@
 		    <label class="control-label">Marker Visible?</label>
 		    <div class="controls">
 		        <input type="checkbox" class="input-medium" ng-model="newMarker.visible">
+		    </div>
+		</div>
+		<div class="control-group">
+		    <label class="control-label">Icon Type</label>
+		    <div class="controls">
+		        <select dropdown required class="input-medium" ng-model="newMarker.iconType" ng-options="icon for icon in markerIcons">
+				</select>
 		    </div>
 		</div>
 		<div class="control-group">
