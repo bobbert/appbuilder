@@ -11,7 +11,11 @@
 	            <h1>Appbuilder - Sample Dummy App</h1>
 	        </div>
 			<div class="pull-left fixed-left">
-
+				<ul class="mapicon-container">
+					<li ng-repeat="iconType in markerIcons">
+						<img title={{iconType}} src={{getIconPathFromType(iconType)}} /> {{iconType}} Marker
+					</li>
+				</ul>
 			</div>
 			<div id="map-canvas" class="pull-left" load_map_defaults>
 

@@ -37,9 +37,13 @@ function MarkersController($scope, $http, Marker) {
 		return markers;
 	}
 	
-	$scope.getMarkerIconPath = function(marker) {
-		if (marker.iconType) {
-			return '/img/' + marker.iconType + '.png';
+	$scope.getIconPathFromMarker = function(marker) {
+		return $scope.getIconPathFromType(marker && marker.iconType);
+	}
+	
+	$scope.getIconPathFromType = function(iconType) {
+		if (iconType) {
+			return '/img/' + iconType + '.png';
 		}
 		else {
 			return '/img/green_marker.png';
@@ -50,7 +54,7 @@ function MarkersController($scope, $http, Marker) {
 		var newMarkerPosition = new google.maps.LatLng(marker.lat, marker.lon);
 		var newMarker = new google.maps.Marker({
 		      position: newMarkerPosition,
-			  icon: $scope.getMarkerIconPath(marker),
+			  icon: $scope.getIconPathFromMarker(marker),
 		      map: $scope.map,
 		      title: marker.name
 		});
@@ -62,7 +66,9 @@ function MarkersController($scope, $http, Marker) {
 		Marker.query(function(data) {
 			$scope.markers = data;
 			$scope.getMarkersAsMapPoints();
-			$scope.map.fitBounds($scope.bounds);
+			if (_.isObject($scope.map)) {
+				$scope.map.fitBounds($scope.bounds);				
+			}
 		});
 	}
 

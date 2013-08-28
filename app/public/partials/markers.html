@@ -1,10 +1,3 @@
-<style>
-    .completed{
-        text-decoration:line-through;
-        background: darkgrey;
-    }
-</style>
-
 <div class="span6 offset3">
     <h2>Map Markers</h2>
     <hr>
@@ -20,7 +13,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="marker in markers">
-	        <td><img src={{getMarkerIconPath(marker)}}></td>
+	        <td><img src={{getIconPathFromMarker(marker)}}></td>
             <td>{{marker.name}}</td>
             <td>{{marker.visible}}</td>
             <td>{{marker.lat}}</td>
