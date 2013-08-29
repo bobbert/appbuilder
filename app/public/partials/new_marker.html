@@ -1,0 +1,43 @@
+<form name="newMarkerForm" class="form-horizontal well">
+	<legend>New Map Marker</legend>
+	<div class="control-group">
+	    <label class="control-label">Marker Name:</label>
+	    <div class="controls">
+	        <input type="text" class="input-medium" ng-model="newMarker.name" ng-init="" required placeholder="Name">
+	    </div>
+	</div>
+	<div class="control-group">
+	    <label class="control-label">Marker Visible?</label>
+	    <div class="controls">
+	        <input id="newMarkerVisibility" type="checkbox" class="input-medium" ng-init="true" ng-model="newMarker.visible">
+	    </div>
+	</div>
+	<div class="control-group">
+	    <label class="control-label">Icon Type</label>
+	    <div class="controls">
+	        <select dropdown required class="input-medium" ng-model="newMarker.iconType" ng-init="" ng-options="icon for icon in markerIcons">
+			</select>
+	    </div>
+	</div>
+	<div class="control-group">
+	    <label class="control-label">Latitude (degrees):</label>
+	    <div class="controls">
+	        <input type="number" step="any" class="input-medium" ng-model="newMarker.lat" required placeholder="Latitude, degrees">
+	    </div>
+	</div>
+	<div class="control-group">
+	    <label class="control-label">Longitude (degrees):</label>
+	    <div class="controls">
+	        <input type="number" step="any" class="input-medium" ng-model="newMarker.lon" required placeholder="Longitude, degrees">
+	    </div>
+	</div>
+	<div class="control-group">
+		<div class="controls">
+			<button data-dismiss="modal" class="btn btn-primary" ng-click="createMarker()">Create</button>
+	        <button data-dismiss="modal" class="btn close-new-marker-form hidden">Close</button>
+		</div>
+	</div>
+	<br>
+	{{statusMessage}}
+</form>
+

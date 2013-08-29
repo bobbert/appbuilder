@@ -14,13 +14,14 @@ function MarkersController($scope, $http, Marker) {
 
 	//function to create a new Marker object
 	$scope.createMarker = function(marker) {
-		if ($scope.newMarkerForm.$invalid) {
+		if (!validateNewMarker($scope.newMarker)) {
 			$scope.statusMessage = 'Invalid marker data';
 			return;
 		}
 		Marker.save({}, $scope.newMarker, function(data) {
 			$scope.markers.push(data);
 			$scope.statusMessage = 'New marker saved.';
+			setSingleMarkerAsMapPoint($scope.newMarker);
 			$scope.newMarker = {};
 
 		}, function(data, status, headers, config) {
@@ -50,6 +51,13 @@ function MarkersController($scope, $http, Marker) {
 		}
 	}
 	
+	$scope.initLatLon = function(lat, lon) {
+		$scope.newMarker = {
+			lat: lat,
+			lon: lon
+		};		
+	}
+	
 	function setSingleMarkerAsMapPoint(marker) {
 		var newMarkerPosition = new google.maps.LatLng(marker.lat, marker.lon);
 		var newMarker = new google.maps.Marker({
@@ -70,6 +78,13 @@ function MarkersController($scope, $http, Marker) {
 				$scope.map.fitBounds($scope.bounds);				
 			}
 		});
+	}
+	
+	function validateNewMarker(newMarker) {
+		return _.isObject(newMarker) &&
+		   _.isNumber(newMarker.lat) && (newMarker.lat > -80) && (newMarker.lat < 80) &&
+		   _.isNumber(newMarker.lon) && (newMarker.lat > -180) && (newMarker.lat < 180) &&
+		   !_.isEmpty(newMarker.name);
 	}
 
 }

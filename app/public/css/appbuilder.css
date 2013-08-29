@@ -40,3 +40,7 @@ ul.mapicon-container li {
 	border: 1px solid #fc8;
 	margin-bottom: 2px;
 }
+
+.hidden {
+	display: none;
+}

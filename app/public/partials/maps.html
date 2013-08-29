@@ -12,7 +12,7 @@
 	        </div>
 			<div class="pull-left fixed-left">
 				<ul class="mapicon-container">
-					<li ng-repeat="iconType in markerIcons">
+					<li draggable ng-repeat="iconType in markerIcons">
 						<img title={{iconType}} src={{getIconPathFromType(iconType)}} /> {{iconType}} Marker
 					</li>
 				</ul>
@@ -23,3 +23,11 @@
 	    </div>
 	</div>
 
+<div id="addNewMarker" class="modal hide popup">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>New Marker</h3>
+    </div>
+    <div class="modal-body flexcroll" ng-include src="'partials/new_marker.html'" >
+    </div>
+</div>
