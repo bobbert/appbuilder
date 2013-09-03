@@ -29,6 +29,18 @@ function MarkersController($scope, $http, Marker) {
 		});
 	}
 	
+	//remove complete todos
+	$scope.deleteMarker = function(marker) {
+		//delete on server
+		marker.$delete({
+			id: marker._id
+		}, function() { 
+			// post-server callback: also remove from client
+			$scope.markers.splice($scope.markers.indexOf(marker), 1);
+			$scope.statusMessage = "Deleted marker '" + marker.name + "'.";
+		});
+	}
+
 	//function to create a new Marker object
 	$scope.getMarkersAsMapPoints = function() {
 		if (!$scope.map) {

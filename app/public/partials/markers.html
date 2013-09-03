@@ -9,6 +9,7 @@
             <th>Visible?</th>
             <th>Latitude</th>
             <th>Longitude</th>
+			<th></th>
         </tr>
         </thead>
         <tbody>
@@ -18,6 +19,7 @@
             <td>{{marker.visible}}</td>
             <td>{{marker.lat}}</td>
             <td>{{marker.lon}}</td>
+			<td><button class="btn" ng-click="deleteMarker(marker)">Delete</button></td>
         </tr>
         </tbody>
     </table>
