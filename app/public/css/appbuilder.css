@@ -7,6 +7,11 @@ a {
 	color: #00B7FF;
 }
 
+.map-coordinates {
+	margin-right: 100px;
+	margin-bottom: 15px;
+}
+
 .fixed-left {
 	float: left;
 	height: 600px;

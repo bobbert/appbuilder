@@ -51,10 +51,11 @@ function MarkersController($scope, $http, Marker) {
 		}
 	}
 	
-	$scope.initLatLon = function(lat, lon) {
+	$scope.initFields = function(lat, lon, iconType) {
 		$scope.newMarker = {
 			lat: lat,
-			lon: lon
+			lon: lon,
+			iconType: iconType
 		};		
 	}
 	
