@@ -13,14 +13,19 @@ function MarkersController($scope, $http, Marker) {
 	$scope.markerIcons = ['computers', 'movierental', 'music', 'phones', 'photography', 'videogames'];
 
 	//function to create a new Marker object
-	$scope.createMarker = function(marker) {
-		if (!validateNewMarker($scope.newMarker)) {
+	$scope.saveMarker = function(marker) {
+		var isNew = _.isEmpty(marker)
+		var params = {}
+		if (!validateNewMarker(marker || $scope.newMarker)) {
 			$scope.statusMessage = 'Invalid marker data';
 			return;
 		}
-		Marker.save({}, $scope.newMarker, function(data) {
+		if (!isNew) {
+			params.id = marker._id;
+		}
+		Marker.save(params, (marker || $scope.newMarker), function(data) {
 			$scope.markers.push(data);
-			$scope.statusMessage = 'New marker saved.';
+			$scope.statusMessage = (isNew ? 'New marker saved.' : ('Marker ' + marker.name + ' updated.'));
 			setSingleMarkerAsMapPoint($scope.newMarker);
 			$scope.newMarker = {};
 

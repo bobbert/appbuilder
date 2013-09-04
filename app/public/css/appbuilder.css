@@ -49,3 +49,11 @@ ul.mapicon-container li {
 .hidden {
 	display: none;
 }
+
+tr:not(.editmode) > td > .editmode {
+	display: none;
+}
+
+tr.editmode > td > .viewmode {
+	display: none;
+}

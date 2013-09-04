@@ -9,17 +9,40 @@
             <th>Visible?</th>
             <th>Latitude</th>
             <th>Longitude</th>
-			<th></th>
+			<th colspan=3></th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="marker in markers">
-	        <td><img src={{getIconPathFromMarker(marker)}}></td>
-            <td>{{marker.name}}</td>
-            <td>{{marker.visible}}</td>
-            <td>{{marker.lat}}</td>
-            <td>{{marker.lon}}</td>
-			<td><button class="btn" ng-click="deleteMarker(marker)">Delete</button></td>
+	        <td>
+				<img class="viewmode" src={{getIconPathFromMarker(marker)}}>
+				<select dropdown required class="input-small editmode" ng-model="marker.iconType" ng-init="" ng-options="icon for icon in markerIcons"></select>
+			</td>
+            <td>
+				<span class="viewmode">{{marker.name}}</span>
+				<input type="text" class="input-medium editmode" ng-model="marker.name" required placeholder="Name">
+			</td>
+            <td>
+				<span class="viewmode">{{marker.visible}}</span>
+				<input type="checkbox" class="input-medium editmode" ng-model="marker.visible">
+			</td>
+            <td>
+				<span class="viewmode">{{marker.lat}}</span>
+				<input type="number" step="any" class="input-medium editmode" ng-model="marker.lat" required placeholder="Latitude, degrees">
+			</td>
+            <td>
+				<span class="viewmode">{{marker.lon}}</span>
+				<input type="number" step="any" class="input-medium editmode" ng-model="marker.lon" required placeholder="Longitude, degrees">
+			</td>
+			<td>
+				<button class="btn update-marker btn-primary editmode" ng-click="saveMarker(marker)">Save</button>
+			</td>
+			<td>
+				<button class="btn edit-toggle">Edit</button>
+			</td>
+			<td>
+				<button class="btn" ng-click="deleteMarker(marker)">Delete</button>
+			</td>
         </tr>
         </tbody>
     </table>
