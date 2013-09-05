@@ -1,5 +1,5 @@
-<div class="span6 offset3">
-    <h2>Map Markers</h2>
+<div class="span6 offset1">
+    <h3 class="center">Map Markers</h3>
     <hr>
     <table class="table table-hover table-condensed">
         <thead>
@@ -14,7 +14,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="marker in markers">
-	        <td>
+	        <td style="min-width:36px;">
 				<img class="viewmode" src={{getIconPathFromMarker(marker)}}>
 				<select dropdown required class="input-small editmode" ng-model="marker.iconType" ng-init="" ng-options="icon for icon in markerIcons"></select>
 			</td>
@@ -28,17 +28,17 @@
 			</td>
             <td>
 				<span class="viewmode">{{marker.lat}}</span>
-				<input type="number" step="any" class="input-medium editmode" ng-model="marker.lat" required placeholder="Latitude, degrees">
+				<input type="number" step="any" class="input-small editmode" ng-model="marker.lat" required placeholder="Latitude, degrees">
 			</td>
             <td>
 				<span class="viewmode">{{marker.lon}}</span>
-				<input type="number" step="any" class="input-medium editmode" ng-model="marker.lon" required placeholder="Longitude, degrees">
+				<input type="number" step="any" class="input-small editmode" ng-model="marker.lon" required placeholder="Longitude, degrees">
 			</td>
 			<td>
 				<button class="btn update-marker btn-primary editmode" ng-click="saveMarker(marker)">Save</button>
 			</td>
 			<td>
-				<button class="btn edit-toggle">Edit</button>
+				<button class="btn edit-toggle" ng-click="saveMarker(marker)">Edit</button>
 			</td>
 			<td>
 				<button class="btn" ng-click="deleteMarker(marker)">Delete</button>

@@ -1,7 +1,6 @@
 'use strict';
 
-
-function TodosController($scope, $http, Todo) {
+controllersModule.controller('TodosController', function($scope, $http, Todo) {
 
 	//get the todos from server
 	getTodosFromServer()
@@ -48,4 +47,6 @@ function TodosController($scope, $http, Todo) {
 			$scope.todos = data;
 		});
 	}
-}
+  }
+);
+

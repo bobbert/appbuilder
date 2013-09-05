@@ -20,7 +20,11 @@
     "express-trace": "0.0.3"
   },
   "devDependencies": {
-    "mocha": "latest"
+      "phantomjs" : "*",
+      "karma" : "*",
+      "karma-junit-reporter" : "*",    
+      "karma-jasmine" : "*",
+      "karma-ng-scenario" : "*"
   },
   "main": "./app/index.js",
   "scripts": {

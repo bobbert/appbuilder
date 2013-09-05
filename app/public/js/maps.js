@@ -5,7 +5,7 @@ $(document).ready(function() {
 			$row.removeClass('editmode');
 			$(this).text('Edit');
 		}
-		else {
+		else {-
 			$row.addClass('editmode');
 			$(this).text('Cancel');
 		}

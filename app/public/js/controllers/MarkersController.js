@@ -1,7 +1,6 @@
 'use strict';
 
-
-function MarkersController($scope, $http, Marker) {
+controllersModule.controller('MarkersController', function($scope, $http, Marker) {
 
 	//get the markers from server
 	getMarkersFromServer();
@@ -33,7 +32,7 @@ function MarkersController($scope, $http, Marker) {
 			$scope.statusMessage = data;
 		});
 	}
-	
+
 	//remove complete todos
 	$scope.deleteMarker = function(marker) {
 		//delete on server
@@ -54,20 +53,20 @@ function MarkersController($scope, $http, Marker) {
 		var markers = _.map($scope.markers, setSingleMarkerAsMapPoint);
 		return markers;
 	}
-	
+
 	$scope.getIconPathFromMarker = function(marker) {
 		return $scope.getIconPathFromType(marker && marker.iconType);
 	}
-	
+
 	$scope.getIconPathFromType = function(iconType) {
 		if (iconType) {
 			return '/img/' + iconType + '.png';
 		}
 		else {
-			return '/img/green_marker.png';
+			return '/img/red_marker.png';
 		}
 	}
-	
+
 	$scope.initFields = function(lat, lon, iconType) {
 		$scope.newMarker = {
 			lat: lat,
@@ -75,7 +74,7 @@ function MarkersController($scope, $http, Marker) {
 			iconType: iconType
 		};		
 	}
-	
+
 	function setSingleMarkerAsMapPoint(marker) {
 		var newMarkerPosition = new google.maps.LatLng(marker.lat, marker.lon);
 		var newMarker = new google.maps.Marker({
@@ -87,7 +86,7 @@ function MarkersController($scope, $http, Marker) {
 		$scope.bounds.extend(newMarkerPosition);
 		return newMarker;
 	}
-	
+
 	function getMarkersFromServer() {
 		Marker.query(function(data) {
 			$scope.markers = data;
@@ -97,12 +96,12 @@ function MarkersController($scope, $http, Marker) {
 			}
 		});
 	}
-	
+
 	function validateNewMarker(newMarker) {
 		return _.isObject(newMarker) &&
 		   _.isNumber(newMarker.lat) && (newMarker.lat > -80) && (newMarker.lat < 80) &&
 		   _.isNumber(newMarker.lon) && (newMarker.lat > -180) && (newMarker.lat < 180) &&
 		   !_.isEmpty(newMarker.name);
 	}
-
-}
+  }
+);

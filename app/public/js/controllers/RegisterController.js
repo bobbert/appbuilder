@@ -1,7 +1,6 @@
 'use strict';
 
-
-function RegisterController($scope, $http, $rootScope, $location) {
+controllersModule.controller('RegisterController', function($scope, $http, $rootScope, $location) {
 	$scope.user = {};
 	$scope.statusMessage = '';
 
@@ -13,4 +12,6 @@ function RegisterController($scope, $http, $rootScope, $location) {
 			$scope.statusMessage = data;
 		});
 	}
-}
+  }
+);
+

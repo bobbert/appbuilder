@@ -1,16 +1,16 @@
 'use strict';
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives'])
+angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.controllers', 'myApp.directives'])
     .config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
 
         //The routes that our angular app will handle
         $routeProvider
-            .when('/', { templateUrl: '/partials/index.html', controller: IndexController })
+            .when('/', { templateUrl: '/partials/index.html', controller: "IndexController" })
             .when('/login', { templateUrl: '/partials/login.html'})
-            .when('/todos', { templateUrl: '/partials/todos.html', controller: TodosController })
-            .when('/markers', { templateUrl: '/partials/markers.html', controller: MarkersController })
-            .when('/map', { templateUrl: '/partials/maps.html', controller: MarkersController })
+            .when('/todos', { templateUrl: '/partials/todos.html', controller: "TodosController" })
+            .when('/markers', { templateUrl: '/partials/markers.html', controller: "MarkersController" })
+            .when('/map', { templateUrl: '/partials/maps.html', controller: "MarkersController" })
             .otherwise({ templateUrl: '/partials/404.html' });
 
         //gets rid of the # in urls

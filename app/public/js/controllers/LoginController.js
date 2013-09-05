@@ -1,6 +1,6 @@
 'use strict';
 
-function LoginController($scope, $http, $rootScope, $location) {
+controllersModule.controller('LoginController', function($scope, $http, $rootScope, $location) {
 	$scope.user = {};
 	$scope.statusMessage = '';
 
@@ -17,4 +17,4 @@ function LoginController($scope, $http, $rootScope, $location) {
 			$scope.statusMessage = data;
 		});
 	}
-}
+  });

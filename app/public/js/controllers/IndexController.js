@@ -1,6 +1,8 @@
 'use strict';
 
+var controllersModule = angular.module('myApp.controllers', []);
 
-function IndexController($scope, $http) {
-	
-}
+controllersModule.controller('IndexController', function($scope, $http) {
+
+});
+
